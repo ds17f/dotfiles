@@ -45,7 +45,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " search
 Plugin 'kien/ctrlp.vim'
 " status bar
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " colorschemes: https://github.com/flazz/vim-colorschemes
 Plugin 'flazz/vim-colorschemes'
@@ -106,3 +106,8 @@ set mouse=a
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+
+" --- control-r replaces in visiual mode
+"https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
