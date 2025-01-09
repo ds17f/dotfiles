@@ -7,6 +7,9 @@ return {
         "<leader>f",
         function()
           require("conform").format({ async = true, lsp_fallback = true })
+          -- require("conform").formatters.prettier_markdown = vim.deepcopy(require("conform.formatters.prettier"))
+          -- require("conform").formatters.prettier_markdown.prepend_args =
+          --   { "--prose-wrap", "always", "--print-width", "80" }
         end,
         mode = "",
         desc = "[F]ormat buffer",
@@ -31,11 +34,14 @@ return {
         go = { "gofmt", "goimports" },
         c = { "clang_format" },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { "black" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        markdown = { "prettier" },
+        -- markdown = { "prettier_markdown" },
       },
       formatters = {
         clang_format = {
@@ -43,6 +49,10 @@ return {
         },
         shfmt = {
           prepend_args = { "-i", "4" },
+        },
+        -- prettier_markdown = {
+        prettier = {
+          prepend_args = { "--print-width", "80", "--prose-wrap", "always" },
         },
       },
     },
